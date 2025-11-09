@@ -1,0 +1,24 @@
+# Python compiled files
+*.pyc
+__pycache__/
+
+# Django local database
+db.sqlite3
+
+# Environment / secrets
+.env
+
+# Logs
+*.log
+
+# Node / React
+node_modules/
+build/
+dist/
+
+# IDE configs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
