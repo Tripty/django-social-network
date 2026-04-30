@@ -43,9 +43,15 @@ User = get_user_model()
 
 @csrf_exempt
 def register(request):
+    #  GET request → show registration page
+    if request.method == "GET":
+        return render(request, "network/register.html")
+
+    #  POST request → handle registration
     if request.method == "POST":
         try:
             data = json.loads(request.body.decode("utf-8"))
+
             username = data.get("username")
             email = data.get("email")
             password = data.get("password")
@@ -57,11 +63,17 @@ def register(request):
             if password != confirmation:
                 return JsonResponse({"error": "Passwords must match."}, status=400)
 
-            # Try creating the user
-            user = User.objects.create_user(username=username, email=email, password=password)
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password
+            )
             user.save()
 
-            return JsonResponse({"message": "User registered successfully."}, status=201)
+            return JsonResponse(
+                {"message": "User registered successfully."},
+                status=201
+            )
 
         except IntegrityError:
             return JsonResponse({"error": "Username already taken."}, status=400)
@@ -69,8 +81,8 @@ def register(request):
         except json.JSONDecodeError:
             return JsonResponse({"error": "Invalid JSON data."}, status=400)
 
-    return JsonResponse({"error": "Invalid request method."}, status=405)
-
+    #  Any other method
+    return JsonResponse({"error": "Method not allowed"}, status=405)
 
 # --- API views ---
 @api_view(['GET'])
