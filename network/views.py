@@ -21,7 +21,7 @@ import json
 from django.db import IntegrityError
 # --- Django HTML views ---
 def index(request):
-    return render(request, "network/index.html")
+    return render(request, "index.html")
 
 def login_view(request):
     if request.method == "POST":
