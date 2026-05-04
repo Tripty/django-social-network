@@ -24,8 +24,8 @@ export default function Profile() {
         setLoadingProfile(true);
         const token = localStorage.getItem("access_token");
         const url = username
-          ? `${API_URL}/profile/${username}/`
-          : `${API_URL}/profile/me/`;
+          ? `api/profile/${username}/`
+          : `api/profile/me/`;
 
         const response = await axios.get(url, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
@@ -68,7 +68,7 @@ export default function Profile() {
         }
 
         const response = await axios.get(
-          `${API_URL}/profile/${target}/posts/`,
+          `api/profile/${target}/posts/`,
           {
             headers: token ? { Authorization: `Bearer ${token}` } : {},
             validateStatus: null,
@@ -106,7 +106,7 @@ export default function Profile() {
       const token = localStorage.getItem("access_token");
       const target = username ?? me;
       const resp = await axios.post(
-        `${API_URL}/profile/${target}/follow/`,
+        `api/profile/${target}/follow/`,
         {},
         { headers: { Authorization: `Bearer ${token}` }, validateStatus: null }
       );
@@ -137,7 +137,7 @@ export default function Profile() {
       const token = localStorage.getItem("access_token");
       const target = username ?? me;
       const resp = await axios.post(
-        `${API_URL}/profile/${target}/unfollow/`,
+        `api/profile/${target}/unfollow/`,
         {},
         { headers: { Authorization: `Bearer ${token}` }, validateStatus: null }
       );

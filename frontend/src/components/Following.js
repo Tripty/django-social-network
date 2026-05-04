@@ -13,7 +13,7 @@ export default function Following() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const fetchPosts = async (url = `${API_URL}/following/`) => {
+  const fetchPosts = async (url = `api/following/`) => {
     try {
       const token = localStorage.getItem("access_token");
       if (!token) {

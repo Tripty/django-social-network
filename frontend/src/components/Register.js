@@ -32,7 +32,7 @@ export default function Register() {
     }
 
     try {
-      await axios.post(`${API_URL.replace("/api", "")}/register`, formData);
+      await axios.post(`/api/.replace("/api", "")}/register`, formData);
       setMessage("✅ Registration successful! Redirecting to login...");
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {

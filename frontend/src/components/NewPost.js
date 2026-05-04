@@ -12,7 +12,7 @@ export default function NewPost({ onPostCreated }) {
     if (!token) return alert("Please login first");
     try {
       const response = await axios.post(
-        `${API_URL}/posts/`,
+        `api/posts/`,
         { content },
         { headers: { Authorization: `Bearer ${token}` } }
       );

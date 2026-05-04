@@ -20,7 +20,7 @@ export default function PostItem({ post, onUpdate, disableUserLink = false }) {
   const handleEdit = async () => {
     try {
       await axios.patch(
-        `${API_URL}/posts/${post.id}/`,
+        `api/posts/${post.id}/`,
         { content },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -35,7 +35,7 @@ export default function PostItem({ post, onUpdate, disableUserLink = false }) {
   const handleToggleLike = async () => {
     try {
       const response = await axios.post(
-        `${API_URL}/posts/${post.id}/like/`,
+        `api/posts/${post.id}/like/`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

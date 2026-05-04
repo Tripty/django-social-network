@@ -15,7 +15,7 @@ export default function Login({ onLoginSuccess }) {
 
     try {
       // POST to JWT token endpoint
-      const response = await axios.post(`${API_URL}/token/`, {
+      const response = await axios.post(`api/token/`, {
         username,
         password,
       });

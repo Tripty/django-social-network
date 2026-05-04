@@ -11,7 +11,7 @@ export default function Posts() {
   const [prevPage, setPrevPage] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const fetchPosts = async (url = `${API_URL}/posts/`) => {
+  const fetchPosts = async (url = `/api/posts/`) => {
     try {
       const token = localStorage.getItem("access_token");
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
